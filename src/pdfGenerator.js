@@ -16,9 +16,9 @@ const printer = new PdfPrinter({
 
 const styles = {
   tableHeader: { fontSize: 8, bold: true, fillColor: '#eeeeee', alignment: 'center' },
-  tableCell: { fontSize: 8 },
-  tableCellRight: { fontSize: 8, alignment: 'right' },
-  tableCellCenter: { fontSize: 8, alignment: 'center' }
+  tableCell: { fontSize: 8, lineHeight: 2 },
+  tableCellRight: { fontSize: 8, alignment: 'right', lineHeight: 2 },
+  tableCellCenter: { fontSize: 8, alignment: 'center', lineHeight: 2 }
 };
 
 /** Crea encabezado con logo, emisor y timbrado */
@@ -173,8 +173,8 @@ function createItemsTable(data) {
       vLineColor: (i, node) => (i === 0 || i === node.table.widths.length) ? '#000000' : '#999999',
       paddingLeft: () => 4,
       paddingRight: () => 4,
-      paddingTop: () => 6,
-      paddingBottom: () => 6
+      paddingTop: () => 5,
+      paddingBottom: () => 5
     },
     margin: [0, 0, 0, 15]
   };
