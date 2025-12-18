@@ -1,6 +1,14 @@
 # Generador PDF KUDE - SIFEN Paraguay
 
-Módulo Node.js para generar PDF KUDE a partir de XML de facturas electrónicas SIFEN.
+Módulo Node.js para generar representación gráfica PDF (KUDE) a partir de documentos electrónicos XML del Sistema Integrado de Facturación Electrónica Nacional (SIFEN) de Paraguay.
+
+## Características
+
+- Genera PDF KUDE desde archivos XML o contenido XML string
+- Soporte para logo personalizado del emisor
+- Extracción automática de datos del XML (emisor, receptor, items, totales)
+- Configuración flexible para sobrescribir datos del XML
+- Retorna Buffer para integración con APIs
 
 ## Instalación
 
@@ -8,10 +16,10 @@ Módulo Node.js para generar PDF KUDE a partir de XML de facturas electrónicas 
 npm install
 ```
 
-## Uso
+## Uso Básico
 
 ```javascript
-const { generateKudePdf } = require('./src');
+const { generateKudePdf } = require('sifen-kude');
 
 // Generar PDF desde archivo XML
 await generateKudePdf({
@@ -25,8 +33,11 @@ const buffer = await generateKudePdf({
   xmlPath: './factura.xml',
   returnBuffer: true
 });
+```
 
-// Sobrescribir datos del emisor
+## Uso con Configuración Personalizada
+
+```javascript
 await generateKudePdf({
   xmlPath: './factura.xml',
   outputPath: './factura.pdf',
@@ -38,7 +49,8 @@ await generateKudePdf({
       ciudad: 'Ciudad',
       pais: 'Paraguay',
       telefono: '+595 21 123456',
-      email: 'contacto@empresa.com'
+      email: 'contacto@empresa.com',
+      actividades: 'Actividades de la empresa'
     }
   }
 });
@@ -46,14 +58,17 @@ await generateKudePdf({
 
 ## Opciones
 
-| Opción | Tipo | Descripción |
-|--------|------|-------------|
-| `xmlPath` | string | Ruta al archivo XML |
-| `xmlContent` | string | Contenido XML como string |
-| `outputPath` | string | Ruta para guardar el PDF |
-| `logoPath` | string | Ruta a imagen del logo (JPG/PNG) |
-| `returnBuffer` | boolean | Si es true, retorna Buffer |
-| `config` | object | Configuración para sobrescribir datos del XML |
+| Opción | Tipo | Requerido | Descripción |
+|--------|------|-----------|-------------|
+| `xmlPath` | string | * | Ruta al archivo XML |
+| `xmlContent` | string | * | Contenido XML como string |
+| `outputPath` | string | ** | Ruta para guardar el PDF |
+| `logoPath` | string | No | Ruta a imagen del logo (JPG/PNG) |
+| `returnBuffer` | boolean | No | Si es true, retorna Buffer |
+| `config` | object | No | Configuración para sobrescribir datos del XML |
+
+\* Se requiere `xmlPath` o `xmlContent`  
+\** Requerido cuando `returnBuffer` es false
 
 ## Configuración del Emisor
 
@@ -68,14 +83,19 @@ Los campos del emisor pueden ser personalizados usando `config.emisor`:
 | `telefono` | string | Teléfono de contacto |
 | `email` | string | Correo electrónico |
 | `ruc` | string | RUC del emisor |
+| `actividades` | string | Actividades económicas (líneas separadas por \n) |
 
-Los campos en `config.emisor` sobrescriben los valores extraídos del XML. Los campos no especificados mantienen el valor original del XML.
+> Los campos en `config.emisor` sobrescriben los valores extraídos del XML. Los campos no especificados mantienen el valor original.
 
 ## Ejemplo
 
 ```bash
 node ejemplo/generar-pdf.js
 ```
+
+## Repositorio
+
+https://github.com/paulocesargarcia/sifen-kude
 
 ## Licencia
 
