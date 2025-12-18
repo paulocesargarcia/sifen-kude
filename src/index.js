@@ -57,7 +57,8 @@ async function generateKudePdf(options) {
   const qrUrl = extractQrUrl(parsedXml);
   const data = extractAllData(de, qrUrl);
   
-  // Aplicar configuración personalizada (sobrescribe datos del XML)
+  // Aplicar configuración personalizada (config es la fuente de verdad)
+  // Los valores del config sobrescriben los del XML, incluso si están vacíos
   if (config.emisor) {
     data.emisor = { ...data.emisor, ...config.emisor };
   }
