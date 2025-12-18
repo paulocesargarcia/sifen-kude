@@ -1,0 +1,16 @@
+{
+  "name": "generador-kude-pdf",
+  "version": "1.0.0",
+  "description": "Generador de PDF KUDE a partir de XML SIFEN - Paraguay",
+  "main": "src/index.js",
+  "scripts": {
+    "ejemplo": "node ejemplo/generar-pdf.js"
+  },
+  "keywords": ["sifen", "kude", "pdf", "factura", "electronica", "paraguay"],
+  "license": "ISC",
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0",
+    "pdfmake": "^0.2.13",
+    "qrcode": "^1.5.4"
+  }
+}
