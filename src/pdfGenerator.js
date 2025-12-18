@@ -40,10 +40,11 @@ function createHeader(data, logoImage) {
   if (emisor.ciudad) emisorStack.push({ text: `${emisor.ciudad} - ${emisor.pais || 'Paraguay'}`, fontSize: 9, margin: [0, 0, 0, 2] });
   if (emisor.telefono) emisorStack.push({ text: `Tel: ${emisor.telefono}`, fontSize: 9 });
   if (emisor.email) emisorStack.push({ text: `Email: ${emisor.email}`, fontSize: 9 });
-  if (emisor.actividades) emisorStack.push({ text: emisor.actividades, fontSize: 5, margin: [0, 3, 0, 0] });
+  if (emisor.actividades) emisorStack.push({ text: emisor.actividades, fontSize: 5, margin: [0, 3, 0, 0], lineHeight: 1.5 });
   
   const emisorColumn = {
     margin: [10, 10, 10, 10],
+    lineHeight: 1.2,
     stack: emisorStack
   };
   
@@ -101,7 +102,7 @@ function createOperacionReceptorInfo(data) {
             ...(receptor.telefono ? [{ text: [{ text: 'Teléfono: ', bold: true }, receptor.telefono], fontSize: 9, margin: [0, 0, 0, 6] }] : []),
             ...((receptor.direccion || receptor.ciudad || receptor.pais) ? [{ 
               text: [
-                { text: 'Dirección: ', bold: true }, 
+                { text: 'Dirección: ', bold: true ,lineHeight: 1.5}, 
                 [receptor.direccion, receptor.ciudad, receptor.pais].filter(Boolean).join(', ')
               ], 
               fontSize: 9 
@@ -174,7 +175,8 @@ function createItemsTable(data) {
       paddingLeft: () => 4,
       paddingRight: () => 4,
       paddingTop: () => 5,
-      paddingBottom: () => 5
+      paddingBottom: () => 5,
+      lineHeight: 1.5
     },
     margin: [0, 0, 0, 15]
   };
