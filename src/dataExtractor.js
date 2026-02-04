@@ -31,9 +31,8 @@ function formatDate(dateStr) {
 /** Formatea solo fecha */
 function formatDateOnly(dateStr) {
   if (!dateStr) return '';
-  const date = new Date(dateStr);
-  const pad = n => String(n).padStart(2, '0');
-  return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+  const [year, month, day] = dateStr.split('-');
+  return `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year}`;
 }
 
 /** Rellena con ceros a la izquierda */

@@ -9,7 +9,7 @@ const path = require('path');
 async function main() {
   // Generar PDF a partir de archivo XML
   await generateKudePdf({
-    xmlPath: path.join(__dirname, 'factura-ejemplo.xml'),
+    xmlPath: path.join(__dirname, 'Factura-Electronica-209064.xml'),
     outputPath: path.join(__dirname, 'factura-generada.pdf'),
     logoPath: './assets/maxdominios-setik.png', // Opcional: agregar su logo aquí
     

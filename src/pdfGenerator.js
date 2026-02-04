@@ -50,24 +50,27 @@ function createHeader(data, logoImage) {
   
   // Columna 3: Datos del timbrado
   const timbradoColumn = {
-    margin: [10, 10, 10, 10],
+    margin: [10, 10, 0, 10],
+    lineHeight: 1.2,
+    fontSize: 9,
     stack: [
-      { text: [{ text: 'RUC: ', bold: true }, emisor.ruc], fontSize: 9, margin: [0, 0, 0, 5] },
-      { text: [{ text: 'Timbrado Nº: ', bold: true }, timbrado.numeroTimbrado], fontSize: 9, margin: [0, 0, 0, 5] },
-      { text: [{ text: 'Fecha de Vigencia: ', bold: true }, timbrado.fechaInicioVigencia], fontSize: 9, margin: [0, 0, 0, 8] },
-      { text: timbrado.tipo.toUpperCase(), fontSize: 10, bold: true, margin: [0, 0, 0, 5] },
-      { text: `Nº: ${timbrado.numeroFormateado}`, fontSize: 10, bold: true }
+      { text: [{ text: 'Timbrado: ', bold: true }, timbrado.numeroTimbrado], margin: [0, 0, 0, 5] },
+      { text: [{ text: 'Inicio de Vigencia: ', bold: true }, timbrado.fechaInicioVigencia], margin: [0, 0, 0, 5], noWrap: true },
+      { text: [{ text: 'RUC: ', bold: true }, emisor.ruc], margin: [0, 0, 0, 5] },      
+      { text: timbrado.tipo.toUpperCase(), fontSize: 10, bold: true, margin: [0, 10, 0, 5]},
+      { text: `Nº: ${timbrado.numeroFormateado}`, fontSize: 10, bold: true}
     ]
   };
   
   return {
     table: {
-      widths: ['22%', '47%', '31%'],
+      widths: ['22%', '48%', '30%'],
       body: [[logoColumn, emisorColumn, timbradoColumn]]
     },
     layout: {
       hLineWidth: (i, node) => (i === 0 || i === node.table.body.length) ? 1 : 0,
       vLineWidth: (i, node) => (i === 0 || i === node.table.widths.length) ? 1 : 0,
+      
       hLineColor: () => '#000000',
       vLineColor: () => '#000000'
     },
