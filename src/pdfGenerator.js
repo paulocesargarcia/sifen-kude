@@ -1,5 +1,6 @@
 /**
  * Generador de PDF KUDE
+ * version: v1.0.2  - 2026-02-06
  */
 
 const PdfPrinter = require('pdfmake');
