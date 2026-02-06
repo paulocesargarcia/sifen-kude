@@ -1,6 +1,7 @@
 /**
  * Ejemplo de uso del módulo generador KUDE PDF
  * Ejecutar: node ejemplo/generar-pdf.js
+ * version: v1.0.2  - 2026-02-06
  */
 
 const { generateKudePdf } = require('../src');
