@@ -100,7 +100,7 @@ function createOperacionReceptorInfo(data) {
         {
           margin: [10, 10, 10, 10],
           stack: [
-            ...(receptor.ruc ? [{ text: [{ text: 'RUC: ', bold: true }, receptor.ruc], fontSize: 9, margin: [0, 0, 0, 6] }] : []),
+            ...(receptor.documento ? [{ text: [{ text: 'RUC/Documento de Identidad Nro.: ', bold: true }, receptor.documento], fontSize: 9, margin: [0, 0, 0, 6] }] : []),
             ...(receptor.razonSocial ? [{ text: [{ text: 'Razón Social: ', bold: true }, receptor.razonSocial], fontSize: 9, margin: [0, 0, 0, 6] }] : []),
             ...(receptor.telefono ? [{ text: [{ text: 'Teléfono: ', bold: true }, receptor.telefono], fontSize: 9, margin: [0, 0, 0, 6] }] : []),
             ...((receptor.direccion || receptor.ciudad || receptor.pais) ? [{ 

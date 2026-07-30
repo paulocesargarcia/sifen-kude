@@ -89,7 +89,9 @@ function extractEmisor(de) {
 function extractReceptor(de) {
   const g = de.gDatGralOpe?.gDatRec || {};
   return {
-    ruc: g.dRucRec ? `${g.dRucRec}-${g.dDVRec || '0'}` : '',
+    documento: g.dRucRec
+      ? `${g.dRucRec}-${g.dDVRec || '0'}`
+      : (g.dNumIDRec || ''),
     razonSocial: g.dNomRec || '',
     direccion: g.dDirRec || '',
     telefono: g.dTelRec || '',
