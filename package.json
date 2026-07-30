@@ -1,6 +1,6 @@
 {
   "name": "generador-kude-pdf",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Generador de PDF KUDE a partir de XML SIFEN - Paraguay",
   "main": "src/index.js",
   "scripts": {
